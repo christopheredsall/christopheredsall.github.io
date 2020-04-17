@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>HPC, Scientific Computing and Miscellany - GPU</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="https://blog.hpcchr.is/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,26 +12,25 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">HPC, Scientific Computing and Miscellany </a></h1>
+                <h1><a href="https://blog.hpcchr.is/">HPC, Scientific Computing and Miscellany </a></h1>
                 <nav><ul>
-                    <li><a href="/category/articles.html">articles</a></li>
-                    <li><a href="/category/c.html">C++</a></li>
+                    <li><a href="https://blog.hpcchr.is/category/articles.html">articles</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/sharing-gpu-nodes-with-torque.html">Sharing GPU Nodes with Torque</a></h1>
+                    <h1 class="entry-title"><a href="https://blog.hpcchr.is/sharing-gpu-nodes-with-torque.html">Sharing GPU Nodes with Torque</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2017-09-02T08:04:00+01:00">
                 Published: Sat 02 September 2017
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="/author/hpcchris.html">hpcchris</a>
+                By                         <a class="url fn" href="https://blog.hpcchr.is/author/hpcchris.html">hpcchris</a>
         </address>
-<p>In <a href="/category/articles.html">articles</a>.</p>
-<p>tags: <a href="/tag/matlab.html">Matlab</a> <a href="/tag/gpu.html">GPU</a> <a href="/tag/cuda_visible_devices.html">CUDA_VISIBLE_DEVICES</a> <a href="/tag/torque.html">torque</a> </p>
+<p>In <a href="https://blog.hpcchr.is/category/articles.html">articles</a>.</p>
+<p>tags: <a href="https://blog.hpcchr.is/tag/matlab.html">Matlab</a> <a href="https://blog.hpcchr.is/tag/gpu.html">GPU</a> <a href="https://blog.hpcchr.is/tag/cuda_visible_devices.html">CUDA_VISIBLE_DEVICES</a> <a href="https://blog.hpcchr.is/tag/torque.html">torque</a> </p>
 </footer><!-- /.post-info --><div class="line-block">
 <div class="line">On most of our clusters we have some nodes that contain <a class="reference external" href="https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units">GPUs</a>. In the case of this particular user request, the cluster is running <a class="reference external" href="http://www.adaptivecomputing.com/products/open-source/torque/">torque</a> with <a class="reference external" href="http://www.adaptivecomputing.com/products/hpc-products/moab-hpc-basic-edition/">Moab</a>. The symptom was that about half the time a job would fail with the error:</div>
 <div class="line"><br /></div>
@@ -96,8 +95,8 @@ export CUDA_VISIBLE_DEVICES=$(grep ${HOSTNAME} ${PBS_GPUFILE} | awk -F&quot;-gpu
                         <h2>social</h2>
                         <ul>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="https://twitter.com/hpcchris">Twitter</a></li>
+                            <li><a href="https://github.com/christopheredsall">GitHub</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->

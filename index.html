@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>HPC, Scientific Computing and Miscellany</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="https://blog.hpcchr.is/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,31 +12,107 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">HPC, Scientific Computing and Miscellany </a></h1>
+                <h1><a href="https://blog.hpcchr.is/">HPC, Scientific Computing and Miscellany </a></h1>
                 <nav><ul>
-                    <li><a href="/category/articles.html">articles</a></li>
-                    <li><a href="/category/c.html">C++</a></li>
+                    <li><a href="https://blog.hpcchr.is/category/articles.html">articles</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/use-math-defines.html">Use Math Defines</a></h1>
+                    <h1 class="entry-title"><a href="https://blog.hpcchr.is/advent-of-code-2018-day-1.html">Advent of Code 2018 - Day 1</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2019-07-10T10:20:00+01:00">
-                Published: Wed 10 July 2019
-        </abbr>
-		<br />
-        <abbr class="modified" title="2019-07-10T10:20:00+01:00">
-                Updated: Wed 10 July 2019
+        <abbr class="published" title="2018-12-01T15:10:00+00:00">
+                Published: Sat 01 December 2018
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="/author/chris-edsall.html">Chris Edsall</a>
+                By                         <a class="url fn" href="https://blog.hpcchr.is/author/hpcchris.html">hpcchris</a>
         </address>
-<p>In <a href="/category/c.html">C++</a>.</p>
-<p>tags: <a href="/tag/pelican.html">pelican</a> <a href="/tag/rse.html">rse</a> </p>
-</footer><!-- /.post-info --><p>This is the content of my super blog post.</p>                </article>
+<p>In <a href="https://blog.hpcchr.is/category/articles.html">articles</a>.</p>
+<p>tags: <a href="https://blog.hpcchr.is/tag/julia.html">julia</a> <a href="https://blog.hpcchr.is/tag/learning.html">learning</a> <a href="https://blog.hpcchr.is/tag/aoc2018.html">aoc2018</a> </p>
+</footer><!-- /.post-info --><div class="section" id="day-1">
+<h2>Day 1</h2>
+<div class="section" id="let-s-do-this-in-julia">
+<h3>Let's do this in Julia!</h3>
+<p>This is the first time I have done Advent of Code. It looked fun last year and so I wanted to have a go this time around. Coincidentally a colleague challenged me to learn a new language, I chose Julia. So the Advent of Code looked like a perfect chance to get stuck in.</p>
+<object data="images/julia-logo.svg" type="image/svg+xml">
+Julia Logo</object>
+</div>
+<div class="section" id="hello-world">
+<h3>Hello World</h3>
+<p>Fortunately I didn't have to think too much about the first program - it has to be Hello World. My work laptop is a Macbook and didn't have Julia installed by default so I downloded the .dmg package for version 1.0.2 and installed it. Starting if from Launchpad brings up a terminal window with the colourful banner and the REPL running. Running</p>
+<div class="sourcecode docutils container">
+<pre class="code julia literal-block">
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">)</span>
+</pre>
+</div>
+<p>gives the expected result and instant gratification. Since I'm a command line kind of person I want to run a julia script throuch the interpreter by invoking it from the shell. The <a class="reference external" href="https://en.wikibooks.org/wiki/Introducing_Julia/Getting_started">Introducing Julia wikibook</a> is invaluable here. To run this Julia script</p>
+<div class="sourcecode docutils container">
+<pre class="code julia literal-block">
+<span class="c">#!/usr/bin/env julia</span>
+
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Kia Ora Koutou&quot;</span><span class="p">)</span>
+</pre>
+</div>
+<p>In the shell I did</p>
+<div class="sourcecode docutils container">
+<pre class="code bash literal-block">
+ls /Applications/Julia-*.app/Contents/Resources/julia/bin/julia
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/Applications/Julia-1.0.app/Contents/Resources/julia/bin/
+chmod a+x kiaora.jl
+./kiaora.jl
+</pre>
+</div>
+</div>
+<div class="section" id="first-puzzle">
+<h3>First Puzzle</h3>
+<p>Starting from a base frquency of zero and given a series of offests find the resulting frequency. There are a number of &quot;test vectors&quot;, test input and the expected output.</p>
+<p>Ideally, I'd learn the standard Julia testing framework, write my tests, write my implementation and then once they are passing try the challenge input. However this is quite a simple problem and I want to get up to speed on some of the more basic language features before jumping in to testing. (Hopefully my RSE colleagues won't disown me just yet.)</p>
+<p>Essentially the problem is to read in a file, treat the input as signed integers and add them all up. Here's my solution using the <tt class="docutils literal">readdlm</tt> function from the <tt class="docutils literal">DelimitedFiles</tt> module</p>
+<div class="sourcecode docutils container">
+<pre class="code julia literal-block">
+<span class="c">#!/usr/bin/env julia</span>
+
+<span class="c"># Advent of Code, Day 1, Puzzle a</span>
+<span class="k">using</span> <span class="n">DelimitedFiles</span>
+<span class="n">println</span><span class="p">(</span> <span class="n">sum</span><span class="p">(</span> <span class="n">readdlm</span><span class="p">(</span><span class="s">&quot;input.txt&quot;</span><span class="p">,</span> <span class="kt">Int64</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+</pre>
+</div>
+<p>Nice and simple!</p>
+</div>
+<div class="section" id="second-puzzle">
+<h3>Second Puzzle</h3>
+<p>The next step is to find the first frequency that is repeated for a second time. We need to look at the array of <a class="reference external" href="https://en.wikipedia.org/wiki/Prefix_sum">cumulative sums</a>. My approach is to iterate through the array storing the frequencies we have already seen in a <tt class="docutils literal">Set</tt>.</p>
+<p>The list of frequency deltas may need to be applied more than once. I'm not particularly happy with my hack of hard coding the number of repeats, but I'm optimising for learning language features rather than perfomance or perfect readability.</p>
+<div class="sourcecode docutils container">
+<pre class="code julia literal-block">
+<span class="c">#!/usr/bin/env julia</span>
+
+<span class="c"># Advent of Code 2018, Day 1, Puzzle b</span>
+<span class="c"># find first repeated element in cumulative sum of (possibly repeated) deltas</span>
+
+<span class="k">using</span> <span class="n">DelimitedFiles</span>
+<span class="n">deltas</span> <span class="o">=</span> <span class="n">readdlm</span><span class="p">(</span><span class="s">&quot;input.txt&quot;</span><span class="p">,</span><span class="kt">Int64</span><span class="p">)</span>
+<span class="n">seen</span> <span class="o">=</span> <span class="kt">Set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="c"># TODO: rework to loop over repetitions rather than arbitrary number 400</span>
+<span class="k">for</span> <span class="n">freq</span> <span class="kp">in</span> <span class="n">cumsum</span><span class="p">(</span><span class="n">repeat</span><span class="p">(</span><span class="n">deltas</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="mi">400</span><span class="p">))</span>
+    <span class="k">if</span> <span class="kp">in</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">seen</span><span class="p">)</span>
+        <span class="n">println</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="k">else</span>
+        <span class="n">push!</span><span class="p">(</span><span class="n">seen</span><span class="p">,</span><span class="n">freq</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</pre>
+</div>
+</div>
+<div class="section" id="first-impressions">
+<h3>First Impressions</h3>
+<p>These problems seem to be squarely in Julia's realm and coming from a backround of C, Fortran and Python the language seems to do what I expect it to with no fuss. Should be a fun month!</p>
+</div>
+</div>
+                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
@@ -45,7 +121,34 @@
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/sharing-gpu-nodes-with-torque.html" rel="bookmark"
+                    <h1><a href="https://blog.hpcchr.is/third-conference-of-research-software.html" rel="bookmark"
+                           title="Permalink to Third conference of Research Software Engineers">Third conference of Research Software Engineers</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-11-19T05:42:00+00:00">
+                Published: Mon 19 November 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://blog.hpcchr.is/author/hpcchris.html">hpcchris</a>
+        </address>
+<p>In <a href="https://blog.hpcchr.is/category/articles.html">articles</a>.</p>
+<p>tags: <a href="https://blog.hpcchr.is/tag/rse.html">RSE</a> <a href="https://blog.hpcchr.is/tag/reserch-software-engineering.html">Reserch Software Engineering</a> </p>
+</footer><!-- /.post-info -->                <div class="section" id="id1">
+<h2>Third conference of Research Software Engineers</h2>
+<img alt="RSE Conference 2018 Banner Image" src="images/rse2018-narrower.png" />
+<p>This year saw the <a class="reference external" href="https://rse.ac.uk/conf2018/">Third Conference of Research Software Engineers</a> (RSEs). It was held at the University of
+Brimingham on the 3rd and 4th of September. The conference was sold out with an
+attendance of 314 delegates from twelve countries. The majority of the …</p></div>
+                <a class="readmore" href="https://blog.hpcchr.is/third-conference-of-research-software.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://blog.hpcchr.is/sharing-gpu-nodes-with-torque.html" rel="bookmark"
                            title="Permalink to Sharing GPU Nodes with Torque">Sharing GPU Nodes with Torque</a></h1>
                 </header>
 
@@ -56,10 +159,10 @@
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="/author/hpcchris.html">hpcchris</a>
+                By                         <a class="url fn" href="https://blog.hpcchr.is/author/hpcchris.html">hpcchris</a>
         </address>
-<p>In <a href="/category/articles.html">articles</a>.</p>
-<p>tags: <a href="/tag/matlab.html">Matlab</a> <a href="/tag/gpu.html">GPU</a> <a href="/tag/cuda_visible_devices.html">CUDA_VISIBLE_DEVICES</a> <a href="/tag/torque.html">torque</a> </p>
+<p>In <a href="https://blog.hpcchr.is/category/articles.html">articles</a>.</p>
+<p>tags: <a href="https://blog.hpcchr.is/tag/matlab.html">Matlab</a> <a href="https://blog.hpcchr.is/tag/gpu.html">GPU</a> <a href="https://blog.hpcchr.is/tag/cuda_visible_devices.html">CUDA_VISIBLE_DEVICES</a> <a href="https://blog.hpcchr.is/tag/torque.html">torque</a> </p>
 </footer><!-- /.post-info -->                <div class="line-block">
 <div class="line">On most of our clusters we have some nodes that contain <a class="reference external" href="https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units">GPUs</a>. In the case of this particular user request, the cluster is running <a class="reference external" href="http://www.adaptivecomputing.com/products/open-source/torque/">torque</a> with <a class="reference external" href="http://www.adaptivecomputing.com/products/hpc-products/moab-hpc-basic-edition/">Moab</a>. The symptom was that about half the time a job would fail with the error:</div>
 <div class="line"><br /></div>
@@ -68,7 +171,7 @@
 <pre class="literal-block">
 Error using gpuDevice (line 26)
 An unexpected error …</pre></div>
-                <a class="readmore" href="/sharing-gpu-nodes-with-torque.html">read more</a>
+                <a class="readmore" href="https://blog.hpcchr.is/sharing-gpu-nodes-with-torque.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
@@ -87,8 +190,8 @@ An unexpected error …</pre></div>
                         <h2>social</h2>
                         <ul>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="https://twitter.com/hpcchris">Twitter</a></li>
+                            <li><a href="https://github.com/christopheredsall">GitHub</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->

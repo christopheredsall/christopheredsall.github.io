@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>The Julia Language | docs.julialang.org</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="The Julia Language" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Repository for hosting the manual for the Julia language" />
+<meta property="og:description" content="Repository for hosting the manual for the Julia language" />
+<link rel="canonical" href="http://docs.julialang.org/404.html" />
+<meta property="og:url" content="http://docs.julialang.org/404.html" />
+<meta property="og:site_name" content="docs.julialang.org" />
+<script type="application/ld+json">
+{"headline":"The Julia Language","@type":"WebPage","url":"http://docs.julialang.org/404.html","description":"Repository for hosting the manual for the Julia language","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=c053545a523d82842a24df30ddd34e7e969b781e">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://docs.julialang.org/">docs.julialang.org</a></h1>
+      
+
+      <h1 id="404">404</h1>
+
+<p>It appears that you have stumbled upon a page on the Julia website
+that does not exist. You may find it useful to start at
+<a href="https://docs.julialang.org">https://docs.julialang.org</a>,
+or navigate the <a href="https://julialang.org">Julia website</a>.</p>
+
+<p>For improvements to this website, please <a href="https://github.com/JuliaLang/julia">file issues or submit
+pull requests</a>.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>
